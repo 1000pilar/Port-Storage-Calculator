@@ -1,0 +1,228 @@
+Private Sub SubmitButton1_Click()
+Dim answer, daysCharge1, daysCharge2, daysCharge3, typeContainer, qtyContainer, tariffDasar20, tariffDasar40, masaDenda1, masaDenda2, masaDenda3, masaDendasppb, masaDendasp2, amountDenda1TwntyFeet, amountDenda2TwntyFeet, amountDenda3TwntyFeet, amountDendasppbTwntyFeet, amountDendasppbTwntyFeetBeta, mountDendasp2TwntyFeet, amountDenda1FourtyFeet, amountDenda2FourtyFeet, amountDenda3FourtyFeet, amountDendasppbFourtyFeet, amountDendasppbFourtyFeetBeta, mountDendasp2FourtyFeet, x As Integer
+tariffDasar20 = 27200
+tariffDasar40 = 54400
+qtyContainer = Cells(7, 9)
+typeContainer = Cells(5, 9)
+daysCharge1 = Cells(11, 13)
+daysCharge2 = Cells(15, 9)
+daysCharge3 = Cells(15, 13)
+masaDenda1 = 1
+masaDenda2 = 1
+masaDenda3 = daysCharge1 - 2
+masaDendasppb = daysCharge2
+masaDendasp2 = daysCharge3
+amountDenda1TwntyFeet = qtyContainer * masaDenda1 * tariffDasar20 * 3
+amountDenda2TwntyFeet = qtyContainer * masaDenda2 * tariffDasar20 * 6
+amountDenda3TwntyFeet = qtyContainer * masaDenda3 * tariffDasar20 * 9
+amountDendasppbTwntyFeet = qtyContainer * masaDendasppb * tariffDasar20 * 2
+amountDenda1FourtyFeet = qtyContainer * masaDenda1 * tariffDasar40 * 3
+amountDenda2FourtyFeet = qtyContainer * masaDenda2 * tariffDasar40 * 6
+amountDenda3FourtyFeet = qtyContainer * masaDenda3 * tariffDasar40 * 9
+amountDendasppbFourtyFeet = qtyContainer * masaDendasppb * tariffDasar40 * 2
+Rows("18:24").EntireRow.Hidden = True
+Rows("25:52").EntireRow.Hidden = False
+
+If typeContainer = "20 feet" Then
+    If daysCharge1 > 0 And daysCharge2 > 0 And daysCharge3 > 0 Then
+        If daysCharge1 = 1 Then
+        Cells(28, 13) = amountDenda1TwntyFeet
+        ElseIf daysCharge1 = 2 Then
+            If Cells(9, 9) > Cells(13, 9) Then
+            amountDendasppbTwntyFeetBeta = qtyContainer * masaDendasppb * tariffDasar20 * 6 * 2
+            amountDendasp2TwntyFeet = qtyContainer * masaDendasp2 * tariffDasar20 * 6 * 3
+            Cells(28, 13) = amountDenda1TwntyFeet
+            Cells(30, 13) = amountDenda2TwntyFeet
+            Cells(38, 13) = amountDendasppbTwntyFeetBeta
+            Cells(42, 13) = amountDendasp2TwntyFeet
+            Else
+            amountDendasp2TwntyFeet = qtyContainer * masaDendasp2 * tariffDasar20 * 6 * 3
+            Cells(28, 13) = amountDenda1TwntyFeet
+            Cells(30, 13) = amountDenda2TwntyFeet
+            Cells(38, 13) = amountDendasppbTwntyFeet
+            Cells(42, 13) = amountDendasp2TwntyFeet
+            End If
+        Else
+            If Cells(9, 9) > Cells(13, 9) Then
+            amountDendasppbTwntyFeetBeta = qtyContainer * masaDendasppb * tariffDasar20 * 9 * 2
+            amountDendasp2TwntyFeet = qtyContainer * masaDendasp2 * tariffDasar20 * 9 * 3
+            Cells(28, 13) = amountDenda1TwntyFeet
+            Cells(30, 13) = amountDenda2TwntyFeet
+            Cells(34, 13) = amountDenda3TwntyFeet
+            Cells(38, 13) = amountDendasppbTwntyFeetBeta
+            Cells(42, 13) = amountDendasp2TwntyFeet
+            Else
+            amountDendasp2TwntyFeet = qtyContainer * masaDendasp2 * tariffDasar20 * 9 * 3
+            Cells(28, 13) = amountDenda1TwntyFeet
+            Cells(30, 13) = amountDenda2TwntyFeet
+            Cells(34, 13) = amountDenda3TwntyFeet
+            Cells(38, 13) = amountDendasppbTwntyFeet
+            Cells(42, 13) = amountDendasp2TwntyFeet
+            End If
+        End If
+    ElseIf daysCharge1 > 0 And daysCharge2 > 0 Then
+        If daysCharge1 = 1 Then
+        Cells(28, 13) = amountDenda1TwntyFeet
+        ElseIf daysCharge1 = 2 Then
+            If Cells(9, 9) > Cells(13, 9) Then
+            amountDendasppbTwntyFeetBeta = qtyContainer * masaDendasppb * tariffDasar20 * 6 * 2
+            Cells(28, 13) = amountDenda1TwntyFeet
+            Cells(30, 13) = amountDenda2TwntyFeet
+            Cells(38, 13) = amountDendasppbTwntyFeetBeta
+            Else
+            Cells(28, 13) = amountDenda1TwntyFeet
+            Cells(30, 13) = amountDenda2TwntyFeet
+            Cells(38, 13) = amountDendasppbTwntyFeet
+            End If
+        Else
+            If Cells(9, 9) > Cells(13, 9) Then
+            amountDendasppbTwntyFeetBeta = qtyContainer * masaDendasppb * tariffDasar20 * 9 * 2
+            Cells(28, 13) = amountDenda1TwntyFeet
+            Cells(30, 13) = amountDenda2TwntyFeet
+            Cells(34, 13) = amountDenda3TwntyFeet
+            Cells(38, 13) = amountDendasppbTwntyFeetBeta
+            Else
+            Cells(28, 13) = amountDenda1TwntyFeet
+            Cells(30, 13) = amountDenda2TwntyFeet
+            Cells(34, 13) = amountDenda3TwntyFeet
+            Cells(38, 13) = amountDendasppbTwntyFeet
+            End If
+        End If
+    ElseIf daysCharge1 > 0 And daysCharge3 > 0 Then
+        If daysCharge1 = 1 Then
+        Cells(28, 13) = amountDenda1TwntyFeet
+        ElseIf daysCharge1 = 2 Then
+        amountDendasp2TwntyFeet = qtyContainer * masaDendasp2 * tariffDasar20 * 6 * 3
+        Cells(28, 13) = amountDenda1TwntyFeet
+        Cells(30, 13) = amountDenda2TwntyFeet
+        Cells(42, 13) = amountDendasp2TwntyFeet
+        Else
+        amountDendasp2TwntyFeet = qtyContainer * masaDendasp2 * tariffDasar20 * 6 * 3
+        Cells(28, 13) = amountDenda1TwntyFeet
+        Cells(30, 13) = amountDenda2TwntyFeet
+        Cells(34, 13) = amountDenda3TwntyFeet
+        Cells(42, 13) = amountDendasp2TwntyFeet
+        End If
+    ElseIf daysCharge1 > 0 Then
+        If daysCharge1 = 1 Then
+        Cells(28, 13) = amountDenda1TwntyFeet
+        ElseIf daysCharge1 = 2 Then
+        Cells(28, 13) = amountDenda1TwntyFeet
+        Cells(30, 13) = amountDenda2TwntyFeet
+        Else
+        Cells(28, 13) = amountDenda1TwntyFeet
+        Cells(30, 13) = amountDenda2TwntyFeet
+        Cells(34, 13) = amountDenda3TwntyFeet
+        End If
+    Else
+        answer = MsgBox("Please Click Yes To Start Over!!!", vbYesNo, "Data Input Is Not Valid")
+        Select Case answer
+            Case vbYes
+            Call Module2.sbClearCellsOnlyData
+            Case vbNo
+            Cells(4, 10) = "Data Input is not Valid"
+        End Select
+    End If
+ElseIf typeContainer = "40 feet" Then
+        If daysCharge1 > 0 And daysCharge2 > 0 And daysCharge3 > 0 Then
+        If daysCharge1 = 1 Then
+        Cells(28, 13) = amountDenda1FourtyFeet
+        ElseIf daysCharge1 = 2 Then
+            If Cells(9, 9) > Cells(13, 9) Then
+            amountDendasppbFourtyFeetBeta = qtyContainer * masaDendasppb * tariffDasar40 * 6 * 2
+            amountDendasp2FourtyFeet = qtyContainer * masaDendasp2 * tariffDasar40 * 6 * 3
+            Cells(28, 13) = amountDenda1FourtyFeet
+            Cells(30, 13) = amountDenda2FourtyFeet
+            Cells(38, 13) = amountDendasppbFourtyFeetBeta
+            Cells(42, 13) = amountDendasp2FourtyFeet
+            Else
+            amountDendasp2FourtyFeet = qtyContainer * masaDendasp2 * tariffDasar40 * 6 * 3
+            Cells(28, 13) = amountDenda1FourtyFeet
+            Cells(30, 13) = amountDenda2FourtyFeet
+            Cells(38, 13) = amountDendasppbFourtyFeet
+            Cells(42, 13) = amountDendasp2FourtyFeet
+            End If
+        Else
+            If Cells(9, 9) > Cells(13, 9) Then
+            amountDendasppbFourtyFeetBeta = qtyContainer * masaDendasppb * tariffDasar40 * 9 * 2
+            amountDendasp2FourtyFeet = qtyContainer * masaDendasp2 * tariffDasar40 * 9 * 3
+            Cells(28, 13) = amountDenda1FourtyFeet
+            Cells(30, 13) = amountDenda2FourtyFeet
+            Cells(34, 13) = amountDenda3FourtyFeet
+            Cells(38, 13) = amountDendasppbFourtyFeetBeta
+            Cells(42, 13) = amountDendasp2FourtyFeet
+            Else
+            amountDendasp2FourtyFeet = qtyContainer * masaDendasp2 * tariffDasar40 * 9 * 3
+            Cells(28, 13) = amountDenda1FourtyFeet
+            Cells(30, 13) = amountDenda2FourtyFeet
+            Cells(34, 13) = amountDenda3FourtyFeet
+            Cells(38, 13) = amountDendasppbFourtyFeet
+            Cells(42, 13) = amountDendasp2FourtyFeet
+            End If
+        End If
+    ElseIf daysCharge1 > 0 And daysCharge2 > 0 Then
+        If daysCharge1 = 1 Then
+        Cells(28, 13) = amountDenda1FourtyFeet
+        ElseIf daysCharge1 = 2 Then
+            If Cells(9, 9) > Cells(13, 9) Then
+            amountDendasppbFourtyFeetBeta = qtyContainer * masaDendasppb * tariffDasar40 * 6 * 2
+            Cells(28, 13) = amountDenda1FourtyFeet
+            Cells(30, 13) = amountDenda2FourtyFeet
+            Cells(38, 13) = amountDendasppbFourtyFeetBeta
+            Else
+            Cells(28, 13) = amountDenda1FourtyFeet
+            Cells(30, 13) = amountDenda2FourtyFeet
+            Cells(38, 13) = amountDendasppbFourtyFeet
+            End If
+        Else
+            If Cells(9, 9) > Cells(13, 9) Then
+            amountDendasppbFourtyFeetBeta = qtyContainer * masaDendasppb * tariffDasar40 * 9 * 2
+            Cells(28, 13) = amountDenda1FourtyFeet
+            Cells(30, 13) = amountDenda2FourtyFeet
+            Cells(34, 13) = amountDenda3FourtyFeet
+            Cells(38, 13) = amountDendasppbFourtyFeetBeta
+            Else
+            Cells(28, 13) = amountDenda1FourtyFeet
+            Cells(30, 13) = amountDenda2FourtyFeet
+            Cells(34, 13) = amountDenda3FourtyFeet
+            Cells(38, 13) = amountDendasppbFourtyFeet
+            End If
+        End If
+    ElseIf daysCharge1 > 0 And daysCharge3 > 0 Then
+        If daysCharge1 = 1 Then
+        Cells(28, 13) = amountDenda1FourtyFeet
+        ElseIf daysCharge1 = 2 Then
+        amountDendasp2FourtyFeet = qtyContainer * masaDendasp2 * tariffDasar40 * 6 * 3
+        Cells(28, 13) = amountDenda1FourtyFeet
+        Cells(30, 13) = amountDenda2FourtyFeet
+        Cells(42, 13) = amountDendasp2FourtyFeet
+        Else
+        amountDendasp2FourtyFeet = qtyContainer * masaDendasp2 * tariffDasar40 * 9 * 3
+        Cells(28, 13) = amountDenda1FourtyFeet
+        Cells(30, 13) = amountDenda2FourtyFeet
+        Cells(34, 13) = amountDenda3FourtyFeet
+        Cells(42, 13) = amountDendasp2FourtyFeet
+        End If
+    ElseIf daysCharge1 > 0 Then
+        If daysCharge1 = 1 Then
+        Cells(28, 13) = amountDenda1FourtyFeet
+        ElseIf daysCharge1 = 2 Then
+        Cells(28, 13) = amountDenda1FourtyFeet
+        Cells(30, 13) = amountDenda2FourtyFeet
+        Else
+        Cells(28, 13) = amountDenda1FourtyFeet
+        Cells(30, 13) = amountDenda2FourtyFeet
+        Cells(34, 13) = amountDenda3FourtyFeet
+        End If
+    Else
+        answer = MsgBox("Please Click Yes To Start Over!!!", vbYesNo, "Data Input Is Not Valid")
+        If answer = vbYes Then
+        Call Module2.sbClearCellsOnlyData
+        Else
+        Cells(4, 10) = "Data Input is not Valid"
+        End If
+    End If
+Else
+qtyContainer = "Not Correct Container Type"
+End If
+End Sub
